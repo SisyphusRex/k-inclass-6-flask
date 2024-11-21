@@ -16,8 +16,14 @@ To run this on windows:
 
 Then in a browser go to http://127.0.0.1:5000/
 """
+# Third Party IMports
 from flask import Flask
 
+#First Party Imports
+from views.home import (
+    home_view,
+    contact_view,
+)
 
 app = Flask(__name__)
 
@@ -26,7 +32,7 @@ app = Flask(__name__)
 # '/' is the root of the domain. If your website was hosted at example.com
 # then the full url would be https://example.com/
 # If the path was '/do/thing/' then the full url would be https://example.com/do/thing/
-@app.route("/")
-def hello_world():
-    # Return a string that will be the full response the browser gets
-    return "<h1>Hello, World!</h1>"
+
+# Define the routes f the app
+app.add_url_rule("/", view_func=home_view)
+app.add_url_rule("/contact", view_func=contact_view)
