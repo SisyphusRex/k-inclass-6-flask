@@ -21,3 +21,12 @@ def employee_list_view():
         "employee/employee_list.html",
         employees=employees,  # template context; any variables needed by template
     )
+
+
+def employee_add_view():
+    """allow adding a new employee to the database"""
+
+    # Return the form for adding a new employee
+    return render_template(
+        "employee/employee_add.html",
+    )

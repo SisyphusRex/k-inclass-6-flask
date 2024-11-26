@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Employee Add{% endblock title %}
+
+{% block content %}
+  <h1>Employee Add</h1>
+  <form method="POST">
+    <div class="mb-3">
+      <label for="first_name" class="form-label">First Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="first_name_id"
+        name="first_name"
+        placeholder="First Name"
+      >
+      <div id="first_name_help_id" class="form-text">First Name of New User</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="last_name" class="form-label">Last Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="last_name_id"
+        name="last_name"
+        placeholder="Last Name"
+      >
+      <div id="Last_name_help_id" class="form-text">Last Name of New User</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="weekly_salary" class="form-label">Weekly Salary:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="weekly_salary_id"
+        name="weekly_salary"
+        placeholder="Weekly Salary"
+      >
+      <div id="weekly_salary_help_id" class="form-text">Weekly Salary of New User</div>
+    </div>
+
+    <button class="btn btn-success" type="submit">Add</button>
+    <a href="{{ url_for('employee_list_view') }}" class="btn btn-secondary">Cancel</a>
+
+
+  </form>
+{% endblock content %}
