@@ -58,3 +58,44 @@ def employee_add_view():
         "employee/employee_add.html",
         errors=errors,
     )
+
+
+def employee_edit_view(pk):
+    """allow editing an existing employee to the database"""
+
+    errors = []
+
+    employee = db_session.get(Employee, pk)
+
+    if not employee:
+        flash(f"Unknown employee with pk of {pk}", "danger")
+        return redirect(url_for("employee_list_view"))
+
+    if request.method == "POST":
+        first_name = request.form["first_name"]
+        last_name = request.form["last_name"]
+        weekly_salary = request.form["weekly_salary"]
+
+        if not first_name:
+            errors.append("The first name is required.")
+        if not last_name:
+            errors.append("The last name is required.")
+        if not weekly_salary:
+            errors.append("The weekly salary is required.")
+
+        if not errors:
+            # Create the new Employee
+            employee.first_name = first_name
+            employee.last_name = last_name
+            employee.weekly_salary = weekly_salary
+            db_session.commit()
+
+            flash("User updated successfully!", "success")
+
+            return redirect(url_for("employee_list_view"))
+
+    # Return the form for adding a new employee
+    return render_template(
+        "employee/employee_add.html",
+        errors=errors,
+    )
