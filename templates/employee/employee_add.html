@@ -13,6 +13,9 @@
         id="first_name_id"
         name="first_name"
         placeholder="First Name"
+        {% if errors %}
+          value="{{ request.form['first_name'] }}"
+        {% endif %}
       >
       <div id="first_name_help_id" class="form-text">First Name of New User</div>
     </div>
@@ -25,6 +28,9 @@
         id="last_name_id"
         name="last_name"
         placeholder="Last Name"
+        {% if errors%}
+          value="{{ request.form['last_name'] }}"
+        {% endif %}
       >
       <div id="Last_name_help_id" class="form-text">Last Name of New User</div>
     </div>
@@ -37,6 +43,9 @@
         id="weekly_salary_id"
         name="weekly_salary"
         placeholder="Weekly Salary"
+        {% if errors %}
+          value="{{ request.form['weekly_salary'] }}"
+        {% endif %}
       >
       <div id="weekly_salary_help_id" class="form-text">Weekly Salary of New User</div>
     </div>

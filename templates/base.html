@@ -154,6 +154,22 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
   <div class="container">
+    {# Fetch out any messages or errors and display them. #}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {%if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {# Check for errors (which may not exist) and display any that are found. #}
+    {% if errors %}
+      {% for error in errors %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endfor %}
+    {% endif %}
+
     {% block content %}{% endblock content %}
   </div>
 </main>

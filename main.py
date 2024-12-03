@@ -32,6 +32,9 @@ from views.employee import (
 
 app = Flask(__name__)
 
+# define the secret key for use with cookies and the session
+app.secret_key = b"TAf51nEWZkp4Z6EkZOjueDz0lTXCPemPYEomgrT6lo0"
+
 
 # @app.route() lets you set the url path that will trigger each view.
 # '/' is the root of the domain. If your website was hosted at example.com
@@ -42,4 +45,4 @@ app = Flask(__name__)
 app.add_url_rule("/", view_func=home_view)
 app.add_url_rule("/contact", view_func=contact_view)
 app.add_url_rule("/employees", view_func=employee_list_view)
-app.add_url_rule("/employees/add", view_func=employee_add_view)
+app.add_url_rule("/employees/add", view_func=employee_add_view, methods=["GET", "POST"])
