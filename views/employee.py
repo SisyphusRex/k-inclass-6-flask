@@ -96,6 +96,24 @@ def employee_edit_view(pk):
 
     # Return the form for adding a new employee
     return render_template(
-        "employee/employee_add.html",
+        "employee/employee_edit.html",
+        employee=employee,
         errors=errors,
+    )
+
+
+def employee_delete_view(pk):
+    """show page for editing an existing employee"""
+    errors = []
+
+    employee = db_session.get(Employee, pk)
+
+    if not employee:
+        errors.append(f"Unknown employee with pk of {pk}")
+
+    if employee and request.method == "POST":
+        pass
+
+    return render_template(
+        "employee/employee_delete.html", employee=employee, errors=errors
     )

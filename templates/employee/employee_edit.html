@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Employee Add{% endblock title %}
+{% block title %}Employee Edit{% endblock title %}
 
 {% block content %}
-  <h1>Employee Add</h1>
+  <h1>Employee Edit</h1>
   <form method="POST">
     <div class="mb-3">
       <label for="first_name" class="form-label">First Name:</label>
@@ -13,11 +13,14 @@
         id="first_name_id"
         name="first_name"
         placeholder="First Name"
+        value="{{ employee.first_name }}"
         {% if errors %}
           value="{{ request.form['first_name'] }}"
+        {% else %}
+          value="{{ employee.first_name }}"
         {% endif %}
       >
-      <div id="first_name_help_id" class="form-text">First Name of New User</div>
+      <div id="first_name_help_id" class="form-text">First Name of User</div>
     </div>
 
     <div class="mb-3">
@@ -28,11 +31,13 @@
         id="last_name_id"
         name="last_name"
         placeholder="Last Name"
-        {% if errors%}
+        {% if errors %}
           value="{{ request.form['last_name'] }}"
+        {% else %}
+          value="{{ employee.last_name }}"
         {% endif %}
       >
-      <div id="last_name_help_id" class="form-text">Last Name of New User</div>
+      <div id="last_name_help_id" class="form-text">Last Name of User</div>
     </div>
 
     <div class="mb-3">
@@ -45,12 +50,14 @@
         placeholder="Weekly Salary"
         {% if errors %}
           value="{{ request.form['weekly_salary'] }}"
+        {% else %}
+          value="{{ employee.weekly_salary }}"
         {% endif %}
       >
-      <div id="weekly_salary_help_id" class="form-text">Weekly Salary of New User</div>
+      <div id="weekly_salary_help_id" class="form-text">Weekly Salary of User</div>
     </div>
 
-    <button class="btn btn-success" type="submit">Add</button>
+    <button class="btn btn-success" type="submit">Update</button>
     <a href="{{ url_for('employee_list_view') }}" class="btn btn-secondary">Cancel</a>
 
 
