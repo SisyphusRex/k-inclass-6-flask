@@ -30,6 +30,8 @@ from views.employee import (
     employee_add_view,
     employee_edit_view,
     employee_delete_view,
+    employee_api,
+    employee_list_api,
 )
 
 app = Flask(__name__)
@@ -58,3 +60,5 @@ app.add_url_rule(
     view_func=employee_delete_view,
     methods=["GET", "POST"],
 )
+app.add_url_rule("/api/employees", view_func=employee_list_api)
+app.add_url_rule("/api/employees/<int:pk>", view_func=employee_api)
